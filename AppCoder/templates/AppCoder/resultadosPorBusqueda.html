@@ -8,15 +8,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block contenidoQueCambia %}
-    <title>Formulario - Agregar Profesor</title>
+    <title>Formulario - Agregar Curso</title>
 </head>
 <body>
 
-    {% if miFormulario.errors %}
+    {% if miFormulario.errors %} 
 
     <p style="color: red;"> Estan mal los datos, revisar</p>
     {% endif %}
-    <h1>Formulario - Agregar Profesor</h1>
+    <h1>Formulario - Agregar Curso</h1>
 
     <form action=""    method="POST">{% csrf_token %}
 
@@ -25,6 +25,21 @@
             {{miFormulario.as_table}}
 
         </table>
+
+        <p>Estoy buscando el: {{camada}}</p>
+
+{% if cursos %}
+
+<ul>
+{% for curso in cursos %}
+    <li> {{curso.nombre}}</li>
+    <li> {{curso.camada}}</li>
+{% endfor %}
+
+</ul>
+
+{% endif %}
+
 
         <input type = "submit" value="Enviar">
         {% endblock %}
