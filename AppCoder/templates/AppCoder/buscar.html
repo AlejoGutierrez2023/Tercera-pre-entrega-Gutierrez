@@ -1,26 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-    {% extends "AppCoder/padre.html" %}
+{% extends "AppCoder/padre.html" %}
+{% load static %}
 
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block contenidoQueCambia %}
-    <title>Búsqueda de cursos</title>
-</head>
-<body>
-    <h1>Buscar Curso</h1>{% csrf_token %}
-<form method="get">
+{% block contenidoQueCambia %}
+
+    <h1>Buscar Curso</h1>
+<form method="POST">{% csrf_token %}
     <label for="q">Nombre del curso:</label>
-    <input type="text" name="q" id="q">
+    <input type="numero" name="camada">
     <button type="submit">Buscar</button>
 </form>
 {% if resultados %}
     <h2>Resultados:</h2>
+    {{ resultados }}
     <a href="{% url 'resultados_busqueda' %}">Ver en forma de tabla</a>
 {% endif %}
     {% endblock %}
-</body>
-</html>

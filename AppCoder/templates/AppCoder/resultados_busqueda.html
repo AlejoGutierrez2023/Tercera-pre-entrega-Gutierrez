@@ -1,23 +1,75 @@
-<table>
-    <thead>
-    <tr>
-        <th>Nombre</th>
-        <th>Camada</th>
-    </tr>
-    </thead> 
-    <tbody>
-    {% for curso in resultados %}
-    <tr>
-        <td>{{ curso.nombre }}</td>
-        <td>{{ curso.camada }}</td>
-    </tr>
-    {% empty %}
-    <tr>
-        <td colspan="2">No se encontraron resultados.</td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
+{% extends "AppCoder/padre.html" %}
+{% load static %}
+
+{% block contenidoQueCambia %}
+    <h1> BUSCAR CURSO </h1>
+
+    <form action="{% url 'BuscarCamada' %}" method="GET">
+        {% csrf_token %}
+        <p> Camada: <input type="number" name="camada" value="{{ request.GET.camada }}"> </p>
+        <input type="submit" value="Buscar">
+    </form>
+
+    {% if data %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Camada</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for curso in data %}
+                    <tr>
+                        <td>{{ curso.nombre }}</td>
+                        <td>{{ curso.camada }}</td>
+                    </tr>
+                
+                    <tr>
+                        <td colspan="2">No se encontraron resultados.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
+
+
+<!-- /*
+{}%% extends "AppCoder/padre.html": Extiende el archivo HTML "padre.html" ubicado en la carpeta "AppCoder".
+{}%% load static: Carga el archivo estático en el HTML.
+{}%% block contenidoQueCambia: Crea un bloque que puede ser sobreescrito en el archivo "padre.html" para cambiar el contenido.
+<h1> BUSCAR CURSO </h1>: Encabezado de nivel 1 para indicar la página de búsqueda de cursos.
+<form action="{% url 'BuscarCamada' %}" method="GET">: Crea un formulario que realiza una solicitud HTTP GET a la URL especificada en la función de vista "BuscarCamada".
+{}%% csrf_token: Agrega un campo de token CSRF al formulario para protegerse de ataques CSRF.
+<p> Camada: <input type="number" name="camada" value="{{ request.GET.camada }}"> </p>: Crea un campo de entrada numérico en el formulario con el nombre "camada" y el valor obtenido de la solicitud HTTP GET.
+<input type="submit" value="Buscar">: Crea un botón para enviar el formulario.
+{}%% if data: Inicia un condicional que verifica si la variable "data" tiene algún valor.
+<table>: Crea una tabla en el HTML.
+<thead>: Crea un encabezado para la tabla.
+<tr>: Crea una fila en la tabla.
+<th>Nombre-</th>: Crea una celda de encabezado con el texto "Nombre".
+<th>-Camada</th>: Crea otra celda de encabezado con el texto "Camada".
+</tr>: Cierra la fila de encabezado.
+</thead>: Cierra el encabezado de la tabla.
+<tbody>: Crea el cuerpo de la tabla.
+{}%% for curso in data: Inicia un bucle que itera sobre cada objeto "curso" en la lista "data".
+<td>{{ curso.nombre }}</td>: Crea una celda con el nombre del curso.
+<td>{{ curso.camada }}</td>: Crea otra celda con la camada del curso.
+</tr>: Cierra la fila.
+<tr><td colspan="2">No se encontraron resultados.</td></tr>: Si la lista "data" está vacía, crea una fila que indica que no se encontraron resultados.
+{}%% endfor: Cierra el bucle.
+</tbody>: Cierra el cuerpo de la tabla.
+</table>: Cierra la tabla.
+{}%% endif: Cierra el condicional.
+{}%% endblock: Cierra el bloque que puede ser sobreescrito en el archivo "padre.html"
+*/ -->
+
+
+
+
+
+
 
 
 

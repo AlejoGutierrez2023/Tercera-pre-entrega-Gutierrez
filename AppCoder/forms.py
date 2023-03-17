@@ -1,7 +1,7 @@
 from django import forms 
 
 class CursoFormulario(forms.Form):
-    curso = forms.CharField()
+    nombre = forms.CharField()
     camada = forms.IntegerField()
 
 class ProfesorFormulario(forms.Form):
@@ -21,5 +21,5 @@ class EntregableFormulario(forms.Form):
     entregado = forms.BooleanField()
 
 class BuscarCursoForm(forms.Form):
-    nombre = forms.CharField(label='Nombre', max_length=40)
-    camada = forms.IntegerField(label='Camada')
+    # nombre = forms.CharField()
+    camada = forms.IntegerField()

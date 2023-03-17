@@ -87,65 +87,37 @@ def estudiante_Formulario(request):
         return render(request, "AppCoder/estudiante_Formulario.html", {"miFormulario":miFormulario})
     
     
-def buscar_curso(request):
-    if request.method == 'POST':
-        form = BuscarCursoForm(request.POST)
-        if form.is_valid():
-            nombre = form.cleaned_data['nombre']
-            camada = form.cleaned_data['camada']
-            resultados = Curso.objects.filter(nombre__icontains=nombre, camada=camada)
-            context = {'resultados': resultados}
+
+def buscar(request):
+    miFormulario = BuscarCursoForm()
+    if request.method == "GET":
+        camada = request.GET.get("camada")
+        if camada:
             try:
-                context = Curso.objects.get(nombre__iexact= nombre, camada__iexact= camada )
-            except Curso.DoesNotExist:
-                context = None
-
-                if context is not None:
-    # Se encontraron los datos, pasar a la plantilla
-                    context = {'context': context, 'encontrado': True}
-                    return render(request, 'busqueda.html', context)
-                else:
-    # No se encontraron los datos, pasar a la plantilla
-                    context = {'encontrado': False}
-                    return render(request, 'busqueda.html', context)
-
-
-
-            return render(request, "AppCoder/resultados_busqueda.html", context)
+                camada_int = int(camada)
+            except ValueError:
+                camada_int = None
+            if camada_int is not None:
+                camadas = Curso.objects.filter(camada=camada_int)
+                return render(request, "AppCoder/resultados_busqueda.html", {"data": camadas})
     else:
-        form = BuscarCursoForm()
-        resultados = None
-    return render(request, 'AppCoder/buscar.html', {'form': form, 'resultados': resultados})
+        miFormulario = BuscarCursoForm()
+
+    return render(request, "AppCoder/resultados_busqueda.html", {"miFormulario": miFormulario})
 
 
+"""
+El código define una función llamada "buscar" que recibe un objeto "request" como parámetro.
 
+La primera línea crea un objeto "miFormulario" de la clase "BuscarCursoForm" para ser utilizado más adelante.
 
+Luego, se verifica si el método de la solicitud HTTP es GET. 
+Si es así, se extrae el valor del parámetro "camada" de la consulta GET utilizando el método "get()" del objeto "request". 
+Si se encuentra un valor para "camada", se intenta convertir a un entero utilizando el bloque try-except. 
+Si la conversión es exitosa, se filtran los cursos de la base de datos que tienen la misma camada que el valor proporcionado, y se pasan a la plantilla "resultados_busqueda.html" para ser renderizados. 
+Los datos se pasan en un diccionario con la clave "data".
 
+Si el método HTTP no es GET, se asigna de nuevo el objeto "miFormulario" a la instancia de la clase "BuscarCursoForm".
 
-
-
-
-
-
-
-
-
-# def entregable_Formulario(request):
-#     if request.method == 'POST':
-
-#         miFormulario = EntregableFormulario(request.POST)
-#         print(miFormulario)
-
-#         if miFormulario.is_valid:
-            
-#             informacion = miFormulario.cleaned_data
-
-#             entregable = Entregable(nombre=informacion['nombre'], fecha_de_entrega=informacion['fecha de entrega'],
-#                                 entregado=informacion['entregado'])
-            
-#             entregable.save()
-
-#             return render(request, "AppCoder/inicio.html")
-#     else:
-#         miFormulario= EntregableFormulario()
-#         return render(request, "AppCoder/entregable_Formulario.html", {"miFormulario":miFormulario})
+Por último, la función renderiza la plantilla "resultados_busqueda.html" y pasa el objeto "miFormulario" como contexto.
+"""
