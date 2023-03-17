@@ -1,27 +1,58 @@
-# ProyectoCoder
+### Tercera pre-entrega Gutierrez
 
-1. Comienza con una descripción clara del proyecto: Explica en pocas palabras de qué se trata el proyecto y cuál es su propósito. Esto ayudará a los usuarios a comprender de qué se trata el proyecto y cómo puede ser útil para ellos.
+## Objetivos generales
 
-2. Proporciona instrucciones de instalación: Incluye instrucciones claras y detalladas sobre cómo instalar y configurar el proyecto en diferentes entornos. Esto es especialmente importante si el proyecto tiene dependencias o requisitos específicos.
+# Desarrollar una WEB Django con patrón MVT subida a Github.
+. Se debe entregar
 
-3. Describe cómo utilizar el proyecto: Proporciona una descripción detallada de cómo utilizar el proyecto y sus características. Si es posible, incluye ejemplos y casos de uso para ayudar a los usuarios a entender mejor cómo utilizar el proyecto.
+1. Link de GitHub con el proyecto totalmente subido a la plataforma.
+2. Proyecto Web Django con patrón MVT que incluya:
+a. Herencia de HTML.
+b. Por lo menos 3 clases en models.
+c. Un formulario para insertar datos en cada una de las clases de tu models.
+d. Un formulario para buscar algo en la BD.
+e. Readme que indique el orden en el que se prueban las cosas y/o donde están las funcionalidades.
 
-4. Proporciona información sobre cómo contribuir: Si el proyecto es de código abierto y acepta contribuciones de la comunidad, asegúrate de incluir información sobre cómo los usuarios pueden contribuir al proyecto. Incluye enlaces a la documentación del proyecto, información sobre cómo informar errores y solicitar funciones.
 
-5. Incluye información sobre la licencia: Asegúrate de incluir información sobre la licencia del proyecto. Esto ayudará a los usuarios a entender los términos de uso del proyecto y las restricciones de la licencia.
+# Para desarrollar una web Django con patrón MVT y subirla a Github, se pueden seguir los siguientes pasos de instalación:
 
-6. Incluye información de contacto: Proporciona información de contacto para que los usuarios puedan ponerse en contacto contigo si tienen preguntas o problemas relacionados con el proyecto.
+1. Instalar Python en el sistema operativo si aún no está instalado. Se recomienda instalar la versión 3.7 o superior.
+
+2. Instalar pip, el gestor de paquetes de Python. Se puede instalar utilizando el comando python -m ensurepip --default-pip en la terminal.
+
+3. Instalar Django utilizando el comando pip install Django.
+
+4. Crear un proyecto de Django utilizando el comando django-admin startproject nombre_proyecto.
+
+5. Ingresar a la carpeta del proyecto utilizando el comando cd nombre_proyecto.
+
+6. Crear una aplicación utilizando el comando python manage.py startapp nombre_app.
+
+7. Crear las vistas, modelos y templates de la aplicación.
+
+8. Configurar las rutas de la aplicación en el archivo urls.py.
+
+9. Ejecutar el servidor local de Django con el comando python manage.py runserver y probar la aplicación en el navegador web.
+
+10. Crear un repositorio en Github y agregar los archivos del proyecto utilizando el comando git add ..
+
+11. Hacer un commit de los cambios utilizando el comando git commit -m "Mensaje del commit".
+
+12. Subir los cambios al repositorio de Github utilizando el comando git push origin main.
+
+
+# Para utilizar el proyecto, es necesario seguir los siguientes pasos:
+
+1. Clonar el repositorio desde Github en la ubicación deseada utilizando el comando: "git clone 'enlace del repositorio'".
+
+2. Confirmar que se tiene instalado Python 3.x y Django en su versión correspondiente al proyecto.
+
+3. En la terminal, ingresar al directorio del proyecto y ejecutar el comando "python manage.py runserver". Esto iniciará el servidor de desarrollo de Django y la aplicación web estará disponible en http://localhost:8000/.
+
+4. Una vez iniciada la aplicación, se puede acceder a las diferentes secciones a través del menú de navegación, según las características del proyecto.
+
+## CONTACTO
+
+Direccion de correo: alejogutierrez02@gmail.com
 
 ----------------------------------------------------------------------------------
-# Mi aplicación de Django con patrón MVT
-
-Esta es una aplicación de ejemplo que muestra cómo utilizar el patrón MVT de Django.
-
-## Instrucciones
-
-1. Clonar el repositorio.
-2. Crear un entorno virtual de Python.
-3. Instalar las dependencias con pip install -r requirements.txt.
-4. Crear las tablas en la BD con python manage.py migrate.
-5. Iniciar el servidor de desarrollo con python manage.py runserver.
-6. Acceder a http://localhost:8000 en el navegador para ver la aplicación.

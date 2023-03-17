@@ -33,11 +33,11 @@ def curso_Formulario(request):
     if request.method == "POST":
 
             miFormulario = CursoFormulario(request.POST) # Aqui me llega la informacion del html
-            print(miFormulario)
+            
 
-            if miFormulario.is_valid:
+            if miFormulario.is_valid():
                 informacion = miFormulario.cleaned_data
-                context = Curso(nombre=informacion["context"], camada=informacion["camada"])
+                context = Curso(nombre=informacion["nombre"], camada=informacion["camada"])
                 context.save()
                 return render(request, "AppCoder/inicio.html")
     else:
@@ -50,7 +50,7 @@ def profesor_Formulario(request):
     if request.method == 'POST':
 
         miFormulario = ProfesorFormulario(request.POST)
-        print(miFormulario)
+        
 
         if miFormulario.is_valid:
             
@@ -70,7 +70,7 @@ def estudiante_Formulario(request):
     if request.method == 'POST':
 
         miFormulario = EstudianteFormulario(request.POST)
-        print(miFormulario)
+        
 
         if miFormulario.is_valid:
             

@@ -15,10 +15,10 @@ class EstudianteFormulario(forms.Form):
     apellido= forms.CharField(max_length=30)
     email= forms.EmailField()
 
-class EntregableFormulario(forms.Form):
-    nombre = forms.CharField(max_length=30)
-    fecha_de_entrega = forms.DateField()
-    entregado = forms.BooleanField()
+# class EntregableFormulario(forms.Form):
+#     nombre = forms.CharField(max_length=30)
+#     fecha_de_entrega = forms.DateField()
+#     entregado = forms.BooleanField()
 
 class BuscarCursoForm(forms.Form):
     # nombre = forms.CharField()
